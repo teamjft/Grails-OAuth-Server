@@ -9,12 +9,12 @@ class BootStrap {
 
         Role roleUser = new Role(authority: 'ROLE_USER').save(flush: true)
 
-        User user = new User( username: 'neeraj', password: 'bhatt', enabled: true, accountExpired: false, accountLocked: false, passwordExpired: false ).save(flush: true)
+        User user = new User( username: 'cris', password: 'cris', enabled: true, accountExpired: false, accountLocked: false, passwordExpired: false ).save(flush: true)
 
         UserRole.create(user, roleUser, true)
 
         new Client(
-                clientId: 'client1',
+                clientId: "${UUID.randomUUID().toString()}",
                 authorizedGrantTypes: ['authorization_code', 'refresh_token', 'implicit', 'password', 'client_credentials'],
                 authorities: ['ROLE_CLIENT'],
                 scopes: ['read', 'write'],
