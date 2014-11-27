@@ -20,20 +20,15 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table style="width: 100%">
 			<thead>
 					<tr>
-					
 						<g:sortableColumn property="clientId" title="${message(code: 'client.clientId.label', default: 'Client Id')}" />
 					
-						<g:sortableColumn property="clientSecret" title="${message(code: 'client.clientSecret.label', default: 'Client Secret')}" />
+						<g:sortableColumn property="clientSecret" title="${message(code: 'client.clientSecret.label', default: 'Client Secret')}" style="display:table-cell"/>
 					
-						<g:sortableColumn property="accessTokenValiditySeconds" title="${message(code: 'client.accessTokenValiditySeconds.label', default: 'Access Token Validity Seconds')}" />
-					
-						<g:sortableColumn property="refreshTokenValiditySeconds" title="${message(code: 'client.refreshTokenValiditySeconds.label', default: 'Refresh Token Validity Seconds')}" />
-					
-						<g:sortableColumn property="additionalInformation" title="${message(code: 'client.additionalInformation.label', default: 'Additional Information')}" />
-					
+                        <th style="word-wrap: break-word; width: 100px" style="display:table-cell">Redirect Url</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -42,14 +37,9 @@
 					
 						<td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean: clientInstance, field: "clientId")}</g:link></td>
 					
-						<td>${fieldValue(bean: clientInstance, field: "clientSecret")}</td>
-					
-						<td>${fieldValue(bean: clientInstance, field: "accessTokenValiditySeconds")}</td>
-					
-						<td>${fieldValue(bean: clientInstance, field: "refreshTokenValiditySeconds")}</td>
-					
-						<td>${fieldValue(bean: clientInstance, field: "additionalInformation")}</td>
-					
+						<td style="word-break: break-all; width: 25%">${fieldValue(bean: clientInstance, field: "clientSecret")}</td>
+						<td style="word-break: break-all; width: 50%">${clientInstance.redirectUris?.first()}</td>
+
 					</tr>
 				</g:each>
 				</tbody>

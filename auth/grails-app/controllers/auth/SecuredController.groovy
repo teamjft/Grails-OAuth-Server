@@ -5,7 +5,10 @@ import grails.plugin.springsecurity.annotation.Secured
 class SecuredController {
 
     @Secured(["#oauth2.clientHasRole('ROLE_CLIENT')"])
-    def clientRoleExpression() { render "client role expression" }
+    def clientRoleExpression() {
+        println "======clientRoleExpression========="
+        render "client role expression"
+    }
 
     @Secured(["ROLE_CLIENT"])
     def clientRole() { render "client role" }
@@ -14,7 +17,10 @@ class SecuredController {
     def clientHasAnyRole() { render "client has any role" }
 
     @Secured(["#oauth2.isClient()"])
-    def client() { render "is client" }
+    def client() {
+        println "======is client========="
+        render "is client"
+    }
 
     @Secured(["#oauth2.isUser()"])
     def user() { render "is user" }
